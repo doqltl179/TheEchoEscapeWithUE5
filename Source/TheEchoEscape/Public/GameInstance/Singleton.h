@@ -14,9 +14,9 @@ class THEECHOESCAPE_API USingleton : public UGameInstance {
 	GENERATED_BODY()
 
 protected:
-	// template는 반드시 .h에서 구현해야 한다.
+	// template이 붙은 함수는 반드시 .h에서 구현해야 한다.
 	template<typename T, typename = TEnableIf<TIsDerivedFrom<T, USingletonObject>::IsDerived>::Type>
-	T* CreateSingletonObject(UObject* Outer = (UObject*)GetTransientPackage()) {
+	T* CreateSingletonObject(UObject* Outer) {
 		USingletonObject* instanceObject = NewObject<T>(Outer);
 
 		if(instanceObject) {
