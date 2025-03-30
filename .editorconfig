@@ -1,6 +1,14 @@
 # top-most EditorConfig file
 root = true
 
+# C++ 파일 설정
+[*.h]
+charset = utf-8
+
+# C++ 파일 설정
+[*.cpp]
+charset = utf-8
+
 # C# 파일 설정
 [*.cs]
 charset = utf-8

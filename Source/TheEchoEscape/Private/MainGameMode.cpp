@@ -3,7 +3,7 @@
 #include "UObject/ConstructorHelpers.h"
 
 void AMainGameMode::BeginPlay() {
-	// ºÎ¸ğ Å¬·¡½ºÀÇ "BeginPlay" ÇÔ¼ö¸¦ È£Ãâ
+	// ë¶€ëª¨ í´ë˜ìŠ¤ì˜ "BeginPlay" í•¨ìˆ˜ë¥¼ í˜¸ì¶œ
 	Super::BeginPlay();
 
     if(MainUIClass) {

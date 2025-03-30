@@ -10,7 +10,7 @@ void UScreenEffectManager::FindEffectMaterial() {
 		StaticLoadObject(UMaterialInterface::StaticClass(), this, *Path));
 
 	if(!MaterialInstance) {
-		// À§¿¡¼­ Ã£Àº ¸ÓÆ¼¸®¾óÀ» µ¿Àû ¸ÓÆ¼¸®¾ó·Î »ı¼º
+		// ìœ„ì—ì„œ ì°¾ì€ ë¨¸í‹°ë¦¬ì–¼ì„ ë™ì  ë¨¸í‹°ë¦¬ì–¼ë¡œ ìƒì„±
 		EffectMaterial = UMaterialInstanceDynamic::Create(MaterialInstance, this);
 	}
 	else {

@@ -1,4 +1,4 @@
-// Project Settings/Project/Maps & Modes Ç×¸ñÁß "Game Instance/Game Instance Class¿¡¼­ ¼³Á¤
+// Project Settings/Project/Maps & Modes í•­ëª©ì¤‘ "Game Instance/Game Instance Classì—ì„œ ì„¤ì •
 
 #pragma once
 
@@ -14,7 +14,7 @@ class THEECHOESCAPE_API USingleton : public UGameInstance {
 	GENERATED_BODY()
 
 protected:
-	// templateÀÌ ºÙÀº ÇÔ¼ö´Â ¹İµå½Ã .h¿¡¼­ ±¸ÇöÇØ¾ß ÇÑ´Ù.
+	// templateì´ ë¶™ì€ í•¨ìˆ˜ëŠ” ë°˜ë“œì‹œ .hì—ì„œ êµ¬í˜„í•´ì•¼ í•œë‹¤.
 	template<typename T, typename = TEnableIf<TIsDerivedFrom<T, USingletonObject>::IsDerived>::Type>
 	T* CreateSingletonObject(UObject* Outer) {
 		USingletonObject* instanceObject = NewObject<T>(Outer);

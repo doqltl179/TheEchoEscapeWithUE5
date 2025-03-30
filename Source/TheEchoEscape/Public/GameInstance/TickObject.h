@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "CoreMinimal.h"
 
@@ -15,14 +15,14 @@ protected:
 
 	virtual bool IsTickable() const override { return IsTicking; }
 
-	// ÀÏ½ÃÁ¤Áö Áß¿¡µµ TickÇÒÁö ¿©ºÎ
+	// ì¼ì‹œì •ì§€ ì¤‘ì—ë„ Tickí• ì§€ ì—¬ë¶€
 	virtual bool IsTickableWhenPaused() const override { return false; }
 
-	// Unreal ¿£ÁøÀÇ Åë°è ½Ã½ºÅÛ¿¡ ÇÊ¿äÇÑ Ç×¸ñ
+	// Unreal ì—”ì§„ì˜ í†µê³„ ì‹œìŠ¤í…œì— í•„ìš”í•œ í•­ëª©
 	virtual TStatId GetStatId() const override {
 		// (UMyTickable, STATGROUP_Tickables)
-		// UMyTickable: Åë°è ÀÌ¸§ (Å¬·¡½º ÀÌ¸§°ú °°°Ô Áş´Â °ÍÀÌ °ü·Ê)
-		// STATGROUP_Tickables: ¼º´É ±×·ì ÀÌ¸§
+		// UMyTickable: í†µê³„ ì´ë¦„ (í´ë˜ìŠ¤ ì´ë¦„ê³¼ ê°™ê²Œ ì§“ëŠ” ê²ƒì´ ê´€ë¡€)
+		// STATGROUP_Tickables: ì„±ëŠ¥ ê·¸ë£¹ ì´ë¦„
 		RETURN_QUICK_DECLARE_CYCLE_STAT(FTickObject, STATGROUP_Tickables);
 	}
 

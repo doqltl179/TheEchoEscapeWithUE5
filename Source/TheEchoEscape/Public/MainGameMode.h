@@ -12,7 +12,7 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly, Category = "UI")
-	TSubclassOf<class UUserWidget> MainUIClass; // "BP_MainGameMode"ÀÇ Details ÆĞ³Î¿¡¼­ ¼³Á¤ÇÔ
+	TSubclassOf<class UUserWidget> MainUIClass; // "BP_MainGameMode"ì˜ Details íŒ¨ë„ì—ì„œ ì„¤ì •í•¨
 
 	UPROPERTY()
 	UUserWidget* MainUIInstance;
