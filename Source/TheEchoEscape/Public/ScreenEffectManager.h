@@ -1,5 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -12,12 +10,19 @@ class THEECHOESCAPE_API UScreenEffectManager : public USingletonObject, public F
 	GENERATED_BODY()
 
 private:
+	const FName MatParamName_FadeStrength = TEXT("FadeStrength");
+
+	void CreatePostProcessVolume();
 	void FindEffectMaterial();
 
 protected:
+	UPROPERTY()
+	APostProcessVolume* PostProcessVolume;
+
 	UPROPERTY()
 	UMaterialInstanceDynamic* EffectMaterial;
 
 public:
 	virtual void Init() override;
+	virtual void OnStart() override;
 };

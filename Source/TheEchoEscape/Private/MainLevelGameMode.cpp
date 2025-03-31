@@ -1,8 +1,8 @@
-#include "MainGameMode.h"
+#include "MainLevelGameMode.h"
 #include "Blueprint/UserWidget.h"
 #include "UObject/ConstructorHelpers.h"
 
-void AMainGameMode::BeginPlay() {
+void AMainLevelGameMode::BeginPlay() {
 	// 부모 클래스의 "BeginPlay" 함수를 호출
 	Super::BeginPlay();
 

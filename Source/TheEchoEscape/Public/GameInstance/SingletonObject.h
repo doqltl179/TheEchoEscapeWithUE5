@@ -10,4 +10,5 @@ class THEECHOESCAPE_API USingletonObject : public UObject {
 
 public:
 	virtual void Init();
+	virtual void OnStart();
 };

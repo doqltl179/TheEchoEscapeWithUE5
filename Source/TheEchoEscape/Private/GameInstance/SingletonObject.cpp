@@ -4,3 +4,5 @@
 #include "GameInstance/SingletonObject.h"
 
 void USingletonObject::Init() { }
+
+void USingletonObject::OnStart() { }

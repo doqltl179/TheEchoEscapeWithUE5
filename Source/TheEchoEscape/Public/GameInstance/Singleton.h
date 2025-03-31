@@ -1,5 +1,3 @@
-// Project Settings/Project/Maps & Modes 항목중 "Game Instance/Game Instance Class에서 설정
-
 #pragma once
 
 #include "CoreMinimal.h"
@@ -31,6 +29,7 @@ protected:
 	}
 
 	virtual void Init() override;
+	virtual void OnStart() override;
 
 	UPROPERTY()
 	UScreenEffectManager* ScreenEffectManager;
