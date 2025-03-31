@@ -3,8 +3,9 @@
 #include "UObject/ConstructorHelpers.h"
 
 void AMainLevelGameMode::BeginPlay() {
-	// 부모 클래스의 "BeginPlay" 함수를 호출
 	Super::BeginPlay();
+
+    UE_LOG(LogTemp, Log, TEXT("[AMainLevelGameMode] BeginPlay"));
 
     if(MainUIClass) {
         MainUIInstance = CreateWidget<UUserWidget>(GetWorld(), MainUIClass);

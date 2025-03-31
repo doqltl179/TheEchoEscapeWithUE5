@@ -4,6 +4,7 @@
 #include "Engine/GameInstance.h"
 
 #include "ScreenEffectManager.h"
+#include "LevelLoadActor.h"
 
 #include "Singleton.generated.h"
 
@@ -21,11 +22,31 @@ protected:
 			instanceObject->Init();
 		}
 		else {
-			FString className = Outer->GetName();
-			UE_LOG(LogTemp, Error, TEXT("[USingleton] Class not found. name: %s"), *className);
+			FString ObjectName = FString(T::StaticClass()->GetName());
+			UE_LOG(LogTemp, Error, TEXT("[USingleton] Class not found. name: %s"), *ObjectName);
 		}
 
 		return Cast<T>(instanceObject);
+	}
+
+	template<typename T, typename = TEnableIf<TIsDerivedFrom<T, ASingletonActor>::IsDerived>::Type>
+	T* CreateSingletonActor(UWorld* World) {
+		FActorSpawnParameters SpawnParams;
+		FString ActorName = FString(T::StaticClass()->GetName());
+		SpawnParams.Name = *ActorName;
+		SpawnParams.OverrideLevel = World->PersistentLevel;
+		ASingletonActor* instanceActor = World->SpawnActor<ASingletonActor>(ALevelLoadActor::StaticClass(), SpawnParams);
+
+		if(instanceActor) {
+#if WITH_EDITOR
+			instanceActor->SetActorLabel(TEXT("RunTimeInstance_") + ActorName);
+#endif
+		}
+		else {
+			UE_LOG(LogTemp, Error, TEXT("[USingleton] Class not found. name: %s"), *ActorName);
+		}
+
+		return Cast<T>(instanceActor);
 	}
 
 	virtual void Init() override;
@@ -33,6 +54,9 @@ protected:
 
 	UPROPERTY()
 	UScreenEffectManager* ScreenEffectManager;
+
+	UPROPERTY()
+	ALevelLoadActor* LevelLoadActor;
 
 public:
 	UScreenEffectManager* GetScreenEffectManager() const { return ScreenEffectManager; }

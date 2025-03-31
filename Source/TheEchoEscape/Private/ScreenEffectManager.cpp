@@ -24,7 +24,7 @@ void UScreenEffectManager::CreatePostProcessVolume() {
 	}
 #if WITH_EDITOR
 	else {
-		PostProcessVolume->SetActorLabel(TEXT("GlobalPostEffect"));
+		PostProcessVolume->SetActorLabel(TEXT("RunTimeInstance_GlobalPostEffect"));
 	}
 #endif
 
@@ -83,7 +83,7 @@ void UScreenEffectManager::Init() {
 	FindEffectMaterial();
 
 	//EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 1.0);
-	EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 0.0);
+	//EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 0.0);
 
 	//StartTick(TestTickEvent, TestStopCondition, TestTickEnd);
 }
