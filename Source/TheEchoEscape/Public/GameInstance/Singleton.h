@@ -4,7 +4,7 @@
 #include "Engine/GameInstance.h"
 
 #include "ScreenEffectManager.h"
-#include "LevelLoadActor.h"
+#include "LevelLoader.h"
 
 #include "Singleton.generated.h"
 
@@ -35,7 +35,7 @@ protected:
 		FString ActorName = FString(T::StaticClass()->GetName());
 		SpawnParams.Name = *ActorName;
 		SpawnParams.OverrideLevel = World->PersistentLevel;
-		ASingletonActor* instanceActor = World->SpawnActor<ASingletonActor>(ALevelLoadActor::StaticClass(), SpawnParams);
+		ASingletonActor* instanceActor = World->SpawnActor<ASingletonActor>(ALevelLoader::StaticClass(), SpawnParams);
 
 		if(instanceActor) {
 #if WITH_EDITOR
@@ -56,7 +56,7 @@ protected:
 	UScreenEffectManager* ScreenEffectManager;
 
 	UPROPERTY()
-	ALevelLoadActor* LevelLoadActor;
+	ALevelLoader* LevelLoadActor;
 
 public:
 	UScreenEffectManager* GetScreenEffectManager() const { return ScreenEffectManager; }

@@ -1,5 +1,26 @@
 #include "ScreenEffectManager.h"
 
+void UScreenEffectManager::CreateUIEffect() {
+	FString Path = TEXT("/Game/Blueprints/BP_UIEffect.BP_UIEffect_C"); // 경로 뒤에 '_C'를 수동으로 붙여줘야 한다.
+	FStringClassReference WidgetClassRef(Path);
+	UClass* WidgetClass = WidgetClassRef.TryLoadClass<UUserWidget>();
+	if(!WidgetClass) {
+		UE_LOG(LogTemp, Error, TEXT("[UScreenEffectManager] WidgetClass not found."));
+		return;
+	}
+
+	UWorld* World = GetWorld();
+	if(!World) {
+		UE_LOG(LogTemp, Error, TEXT("[UScreenEffectManager] World not found."));
+		return;
+	}
+
+	UIEffectInstance = CreateWidget<UUIEffect>(World, WidgetClass);
+	if(UIEffectInstance) {
+		UIEffectInstance->AddToViewport(5000); // ZOrder를 5000으로 설정
+	}
+}
+
 void UScreenEffectManager::CreatePostProcessVolume() {
 	if(PostProcessVolume) {
 		return;
@@ -8,6 +29,7 @@ void UScreenEffectManager::CreatePostProcessVolume() {
 	UWorld* World = GetWorld();
 	if(!World) {
 		UE_LOG(LogTemp, Error, TEXT("[UScreenEffectManager] World not found."));
+		return;
 	}
 
 	FActorSpawnParameters SpawnParams;
@@ -21,6 +43,7 @@ void UScreenEffectManager::CreatePostProcessVolume() {
 	);
 	if(!PostProcessVolume) {
 		UE_LOG(LogTemp, Error, TEXT("[UScreenEffectManager] Failed create PostProcessVolume."));
+		return;
 	}
 #if WITH_EDITOR
 	else {
@@ -83,7 +106,7 @@ void UScreenEffectManager::Init() {
 	FindEffectMaterial();
 
 	//EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 1.0);
-	//EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 0.0);
+	EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 0.0);
 
 	//StartTick(TestTickEvent, TestStopCondition, TestTickEnd);
 }
@@ -92,4 +115,5 @@ void UScreenEffectManager::OnStart() {
 	UE_LOG(LogTemp, Log, TEXT("[UScreenEffectManager] OnStart"));
 
 	CreatePostProcessVolume();
+	CreateUIEffect();
 }

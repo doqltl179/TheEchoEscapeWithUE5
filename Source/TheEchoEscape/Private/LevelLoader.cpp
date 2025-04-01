@@ -1,26 +1,26 @@
-#include "LevelLoadActor.h"
+#include "LevelLoader.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/LevelStreamingDynamic.h"
 
-ALevelLoadActor::ALevelLoadActor() {
+ALevelLoader::ALevelLoader() {
 	PrimaryActorTick.bCanEverTick = false;
 	PrimaryActorTick.bStartWithTickEnabled = false;
 	SetActorTickEnabled(false);
 }
 
-void ALevelLoadActor::BeginPlay() {
+void ALevelLoader::BeginPlay() {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Log, TEXT("[ALevelLoadActor] BeginPlay"));
+	UE_LOG(LogTemp, Log, TEXT("[ALevelLoader] BeginPlay"));
 
 	LoadMainLevel();
 }
 
-void ALevelLoadActor::LoadLevel(FName LevelName) {
+void ALevelLoader::LoadLevel(FName LevelName) {
 	UGameplayStatics::LoadStreamLevel(this, LevelName, true, false, FLatentActionInfo());
 }
 
-void ALevelLoadActor::UnloadLevel(FName LevelName) {
+void ALevelLoader::UnloadLevel(FName LevelName) {
 	UGameplayStatics::UnloadStreamLevel(this, LevelName, FLatentActionInfo(), false);
 }
 

@@ -2,14 +2,14 @@
 
 #include "CoreMinimal.h"
 #include "GameInstance/SingletonActor.h"
-#include "LevelLoadActor.generated.h"
+#include "LevelLoader.generated.h"
 
 UCLASS()
-class THEECHOESCAPE_API ALevelLoadActor : public ASingletonActor {
+class THEECHOESCAPE_API ALevelLoader : public ASingletonActor {
 	GENERATED_BODY()
 
 public:
-	ALevelLoadActor();
+	ALevelLoader();
 
 	void LoadMainLevel() { LoadLevel(LevelName_Main); }
 	void LoadGameLevel() { LoadLevel(LevelName_Game); }

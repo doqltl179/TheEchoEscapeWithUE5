@@ -3,6 +3,7 @@
 #include "CoreMinimal.h"
 #include "GameInstance/SingletonObject.h"
 #include "GameInstance/TickObject.h"
+#include "BlueprintParent/UIEffect.h"
 #include "ScreenEffectManager.generated.h"
 
 UCLASS()
@@ -12,8 +13,9 @@ class THEECHOESCAPE_API UScreenEffectManager : public USingletonObject, public F
 private:
 	const FName MatParamName_FadeStrength = TEXT("FadeStrength");
 
-	void CreatePostProcessVolume();
 	void FindEffectMaterial();
+	void CreatePostProcessVolume();
+	void CreateUIEffect();
 
 protected:
 	UPROPERTY()
@@ -21,6 +23,9 @@ protected:
 
 	UPROPERTY()
 	UMaterialInstanceDynamic* EffectMaterial;
+
+	UPROPERTY()
+	UUIEffect* UIEffectInstance;
 
 public:
 	virtual void Init() override;

@@ -19,6 +19,6 @@ void USingleton::OnStart() {
 
 	UWorld* World = GetWorld();
 	if(World) {
-		LevelLoadActor = CreateSingletonActor<ALevelLoadActor>(World);
+		LevelLoadActor = CreateSingletonActor<ALevelLoader>(World);
 	}
 }
