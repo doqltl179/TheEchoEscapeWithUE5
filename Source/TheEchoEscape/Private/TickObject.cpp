@@ -1,4 +1,4 @@
-#include "GameInstance/TickObject.h"
+#include "TickObject.h"
 
 void FTickObject::Tick(float DeltaTime) {
 	if(!IsTicking) {

@@ -2,12 +2,11 @@
 
 #include "CoreMinimal.h"
 #include "GameInstance/SingletonObject.h"
-#include "GameInstance/TickObject.h"
 #include "BlueprintParent/UIEffect.h"
 #include "ScreenEffectManager.generated.h"
 
 UCLASS()
-class THEECHOESCAPE_API UScreenEffectManager : public USingletonObject, public FTickObject {
+class THEECHOESCAPE_API UScreenEffectManager : public USingletonObject {
 	GENERATED_BODY()
 
 private:

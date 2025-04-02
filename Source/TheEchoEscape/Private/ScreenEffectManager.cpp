@@ -18,6 +18,8 @@ void UScreenEffectManager::CreateUIEffect() {
 	UIEffectInstance = CreateWidget<UUIEffect>(World, WidgetClass);
 	if(UIEffectInstance) {
 		UIEffectInstance->AddToViewport(5000); // ZOrder를 5000으로 설정
+
+		UIEffectInstance->OnStart();
 	}
 }
 
@@ -104,11 +106,6 @@ void UScreenEffectManager::Init() {
 	UE_LOG(LogTemp, Log, TEXT("[UScreenEffectManager] Init"));
 
 	FindEffectMaterial();
-
-	//EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 1.0);
-	EffectMaterial->SetScalarParameterValue(MatParamName_FadeStrength, 0.0);
-
-	//StartTick(TestTickEvent, TestStopCondition, TestTickEnd);
 }
 
 void UScreenEffectManager::OnStart() {
