@@ -1,5 +1,5 @@
 #include "LevelControl/MainLevelControl.h"
-#include "Blueprint/UserWidget.h"
+#include "BlueprintParent/MainUI.h"
 
 void AMainLevelControl::BeginPlay() {
     Super::BeginPlay();
@@ -10,8 +10,12 @@ void AMainLevelControl::BeginPlay() {
         UE_LOG(LogTemp, Error, TEXT("[AMainLevelControl] MainUIClass not found."));
         return;
     }
+    else if(MainUIClass->ClassGeneratedBy == nullptr) {
+        UE_LOG(LogTemp, Error, TEXT("[AMainLevelControl] MainUIClass is not a Blueprint."));
+        return;
+    }
 
-    MainUIInstance = CreateWidget<UUserWidget>(GetWorld(), MainUIClass);
+    MainUIInstance = CreateWidget<UMainUI>(GetWorld(), MainUIClass);
     if(MainUIInstance) {
         MainUIInstance->AddToViewport();
     }
