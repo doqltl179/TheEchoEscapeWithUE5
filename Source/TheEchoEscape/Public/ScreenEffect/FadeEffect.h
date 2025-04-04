@@ -26,9 +26,13 @@ protected:
 	virtual bool StopCondition() override;
 
 public:
+	virtual void Execute(TFunction<void()> InTickEnd) override;
+
 	const void SetFromToValue(float InFrom, float InTo) {
 		fadeFrom = InFrom;
 		fadeTo = InTo;
+
+		FadeImage->SetVisibility(ESlateVisibility::Visible);
 	}
 
 	const void SetFadeImage(UImage* InImage) {

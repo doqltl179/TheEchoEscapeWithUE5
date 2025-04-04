@@ -14,3 +14,15 @@ void UFadeEffect::TickEvent(float DeltaTime) {
 bool UFadeEffect::StopCondition() {
 	return timer >= effectTime;
 }
+
+void UFadeEffect::Execute(TFunction<void()> InTickEnd) {
+	Super::Execute(
+		[this, InTickEnd]() {
+			InTickEnd();
+
+			if(fadeTo <= 0) {
+				this->FadeImage->SetVisibility(ESlateVisibility::Hidden);
+			}
+		}
+	);
+}

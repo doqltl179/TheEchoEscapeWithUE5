@@ -16,12 +16,5 @@ protected:
 	virtual bool StopCondition();
 
 public:
-	const void Execute(TFunction<void()> InTickEnd) {
-		InitParams();
-
-		StartTick(
-			[this](float DeltaTime) { this->TickEvent(DeltaTime); },
-			[this]() { return this->StopCondition(); },
-			InTickEnd);
-	}
+	virtual void Execute(TFunction<void()> InTickEnd);
 };

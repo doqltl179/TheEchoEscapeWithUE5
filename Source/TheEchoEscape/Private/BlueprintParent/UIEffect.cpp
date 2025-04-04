@@ -5,12 +5,14 @@ void UUIEffect::OnStart() {
 
 	FadeEffect = NewObject<UFadeEffect>(this, UFadeEffect::StaticClass());
     if(FadeEffect) {
+		if(FadeImage == nullptr) {
+			UE_LOG(LogTemp, Error, TEXT("[UUIEffect] FadeImage is NULL."));
+			return;
+		}
+
 		FadeEffect->SetFadeImage(FadeImage);
 
-
-
-		// Test
-		FadeEffect->SetFromToValue(0.0f, 1.0f);
+		FadeEffect->SetFromToValue(1.0f, 0.0f);
 		FadeEffect->Execute(
 			[this]() {
 				UE_LOG(LogTemp, Log, TEXT("[UUIEffect] Fade End"));
